@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   get 'home/index'
   root to: "home#index"
   authenticate :admin do
-    resources :products
     resources :categories
   end
+
+  resources :products
+
+  #La ruta del carrito con sus acciones
+  resource :cart, only: [:show, :update]
 end
